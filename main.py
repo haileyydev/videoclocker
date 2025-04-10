@@ -106,7 +106,7 @@ class MainWindow(Gtk.ApplicationWindow):
             turbo_on = 1
         else:
             turbo_on = 0
-        subprocess.run(["pkexec", sys.executable, *sys.argv, "--gpuboost", str(gpu_boost), "--memboost", str(mem_boost), "--turbo", str(turbo_on), "--power", str(power_limit), "--quit", "1"])
+        subprocess.run(["pkexec", sys.executable, "--gpuboost", str(gpu_boost), "--memboost", str(mem_boost), "--turbo", str(turbo_on), "--power", str(power_limit), "--quit", "1"])
 
 class MyApp(Adw.Application):
     def __init__(self, **kwargs):
@@ -139,7 +139,7 @@ if args.turbo is not None:
     else:
         nvmlDeviceSetMemoryLockedClocks(myGPU, 100000, 100000)
         nvmlDeviceSetGpuLockedClocks(myGPU, 100000, 100000)
-        
+
 if args.quit is not None:
     exit()
 
